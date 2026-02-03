@@ -1,63 +1,62 @@
 from tkinter import *
-from tkinter import ttk
-import random
-import time
+from random import randint
 
-god_damned_number_1 = random.randint(1, 10)
-god_damned_number_2 = random.randint(1, 10)
+value1 = 0
+value2 = 0
 
-def shitty_func():
-    god_damned_number_1= random.randint(1, 10)
-    god_damned_number_2= random.randint(1, 10)
-    god_damned_label.config(text=f"{god_damned_number_1}*{god_damned_number_2}")
+# Gets two new random numbers and shows question to given label
+def next_question(question_output):
+    # modify global vriables, don't define new onces.
+    global value1, value2
+    value1 = randint(1, 10)
+    value2 = randint(1, 10)
+    question_output.config(text=f"{value1} x {value2}")
 
-
-
-
-
-def crap():
-    god_damned_answer = int(thing.get())
-    if god_damned_answer == god_damned_number_1*god_damned_number_2:
-        god_damned_label_2.config(text="correct", foreground="green")
+# Checks ansewr from given input and shows results to given output
+# If question is correct, next answer is shown
+def check_answer(answer_input, result_output, question_output):
+    answer = int(answer_input.get())
+    if answer == (value1*value2):
+        result_output.config(text="Correct :)", foreground="green")
+        next_question(question_output)
+        answer_input.delete(0, 'end')
     else:
-        god_damned_label_2.config(text="wrong", foreground="red")
+        result_output.config(text="Wrong :(", foreground="red")
+    
+def init_gui(window):
+    question_label = Label(window)
+    question_label.pack()
 
+    result_label = Label(window)
+    result_label.pack()
 
+    answer_input = Entry()
+    answer_input.pack()
 
+    nikon_icon = PhotoImage(file="icon.png")
+    window.iconphoto(True, nikon_icon)
 
+    # calls abstract function with correct parameters
+    def nextQuestion():
+        next_question(question_label)
 
-this = Tk()
-this.title("shiii")
-this.geometry("300x150")
+    # calls abstract function with correct parameters
+    def checkAnswer():
+        check_answer(answer_input, result_label, question_label)
 
+    check_answer_button = Button(window, text="Check answer :D", command=checkAnswer)
+    check_answer_button.pack(side = BOTTOM)
 
+    skip_button = Button(window, text="Skip :[", command=nextQuestion)
+    skip_button.pack(side = BOTTOM)
 
-god_damned_label = Label(this, text=f"{god_damned_number_1}*{god_damned_number_2}")
-god_damned_label.pack()
+    nextQuestion()
 
+# init and config window
+window = Tk()
+window.title("Math Helper")
+window.geometry("100x80")
 
-god_damned_label_2 = Label(this, text="this label will show if your answer was correct")
-god_damned_label_2.pack()
+init_gui(window)
 
-
-
-
-nikon = PhotoImage(file="v1-ultrakill.png")
-this.iconphoto(True, nikon)
-
-
-
-
-
-buttone = Button(this, text="submit your answer :D", command=crap)
-buttone.pack(side = BOTTOM)
-
-buttone_2 = Button(this, text="new question", command=shitty_func)
-buttone_2.pack(side = BOTTOM)
-
-
-thing = Entry()
-thing.pack()
-
-
-this.mainloop()
+window.mainloop()
