@@ -10,8 +10,9 @@ class AppWindow:
     def init_window(self):
         self.window = Tk()
         self.window.geometry("100x100")
-        nikon_icon = PhotoImage(file="res/icon.png")
-        self.window.iconphoto(True, nikon_icon)
+        #Removed so generated bin runs without needing res/
+        #nikon_icon = PhotoImage(file="res/icon.png")
+        #self.window.iconphoto(True, nikon_icon)
         self.window.title("Math Helper")
 
     def init_gui(self, window):
