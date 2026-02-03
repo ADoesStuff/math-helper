@@ -33,7 +33,7 @@ def init_gui(window):
     answer_input = Entry()
     answer_input.pack()
 
-    nikon_icon = PhotoImage(file="icon.png")
+    nikon_icon = PhotoImage(file="res/icon.png")
     window.iconphoto(True, nikon_icon)
 
     # calls abstract function with correct parameters
