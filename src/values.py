@@ -12,10 +12,10 @@ class ValueManager:
         return [self.value1, self.value2]
 
     def check(self, val):
-        val == (self.value1*self.value2)
-        if(val):
+        if val == self.value1*self.value2:
             self.score += 1
-        return val
+            return True
+        return False
     
     def get_score(self):
         return self.score
