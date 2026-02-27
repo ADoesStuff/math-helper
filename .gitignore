@@ -2,3 +2,6 @@ main.dist
 main.onefile-build
 math-helper-linux
 main.build
+main.exe
+main.pdb
+math-helper-linux
