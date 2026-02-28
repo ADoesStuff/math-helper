@@ -1,1 +1,1 @@
-python3 src/TK.py
+python src/main.py

@@ -9,7 +9,7 @@ class AppWindow:
 
     def init_window(self):
         self.window = Tk()
-        self.window.geometry("100x100")
+        self.window.geometry("200x150")
         #Removed so generated bin runs without needing res/
         #nikon_icon = PhotoImage(file="res/icon.png")
         #self.window.iconphoto(True, nikon_icon)
@@ -50,7 +50,9 @@ class AppWindow:
         try:
             answer = int(self.answer_input.get())
         except:
-            answer = 0
+            self.result_label.config(text="not number",foreground="red")
+            
+            return
         if self.val_man.check(answer):
             self.result_label.config(text="Correct :)", foreground="green")
             self.next_question()

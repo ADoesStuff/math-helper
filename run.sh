@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python3 src/TK.py
+python3 src/main.py
